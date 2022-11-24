@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { PageInfo, Social } from "../typings";
 import Dropdown from "./DropDown";
 import Image from "next/image";
-// import { useState } from "react";
+import { useState } from "react";
 import Switcher from "./Switcher";
 import { useSelector } from "react-redux";
 import { themeValue } from "../slices/darkModeSlice";
@@ -15,8 +15,8 @@ type Props = {
 
 export default function Header({ socials, pageInfo }: Props) {
   const darkMode = useSelector(themeValue);
-  // const [selected, setSelected] = useState("/images/US_FLAG.svg");
-  // const [selectedLang, setSelectedLang] = useState("EN");
+  const [selected, setSelected] = useState("/images/US_FLAG.svg");
+  const [selectedLang, setSelectedLang] = useState("EN");
 
   return (
     <header className="sticky top-0 p-5 flex items-center justify-between max-w-7xl mx-auto z-20 xl:items-center">
@@ -87,10 +87,10 @@ export default function Header({ socials, pageInfo }: Props) {
           </p>
         </a>
         <Dropdown
-          // selected={selected}
-          // setSelected={setSelected}
-          // selectedLang={selectedLang}
-          // setSelectedLang={setSelectedLang}
+          selected={selected}
+          setSelected={setSelected}
+          selectedLang={selectedLang}
+          setSelectedLang={setSelectedLang}
         />
         <Switcher />
       </motion.div>

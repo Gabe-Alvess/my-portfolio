@@ -5,17 +5,17 @@ import { useSelector } from "react-redux";
 import { languageValue } from "../slices/languageSlice";
 
 type Props = {
-  // selected: string;
-  // setSelected: any;
-  // selectedLang: string;
-  // setSelectedLang: any;
+  selected: string;
+  setSelected: any;
+  selectedLang: string;
+  setSelectedLang: any;
 };
 
 export default function Dropdown({
-  // selected,
-  // setSelected,
-  // selectedLang,
-  // setSelectedLang,
+  selected,
+  setSelected,
+  selectedLang,
+  setSelectedLang,
 }: Props) {
   const [open, setOpen] = useState(false);
 
@@ -34,32 +34,32 @@ export default function Dropdown({
     };
   });
   const language = useSelector(languageValue);
-  // const flags = [
-  //   {
-  //     id: 0,
-  //     imgUrl: "/images/US_FLAG.svg",
-  //     lang: "EN",
-  //     alt: "English",
-  //   },
-  //   {
-  //     id: 1,
-  //     imgUrl: "/images/NL_FLAG.svg",
-  //     lang: "NL",
-  //     alt: "Dutch",
-  //   },
-  //   {
-  //     id: 2,
-  //     imgUrl: "/images/FR_FLAG.svg",
-  //     lang: "FR",
-  //     alt: "French",
-  //   },
-  //   {
-  //     id: 3,
-  //     imgUrl: "/images/BR_FLAG.svg",
-  //     lang: "PT",
-  //     alt: "Portuguese",
-  //   },
-  // ];
+  const flags = [
+    {
+      id: 0,
+      imgUrl: "/images/US_FLAG.svg",
+      lang: "EN",
+      alt: "English",
+    },
+    {
+      id: 1,
+      imgUrl: "/images/NL_FLAG.svg",
+      lang: "NL",
+      alt: "Dutch",
+    },
+    {
+      id: 2,
+      imgUrl: "/images/FR_FLAG.svg",
+      lang: "FR",
+      alt: "French",
+    },
+    {
+      id: 3,
+      imgUrl: "/images/BR_FLAG.svg",
+      lang: "PT",
+      alt: "Portuguese",
+    },
+  ];
 
   const flagList = flags.filter((item) => item.imgUrl !== selected);
 
