@@ -1,0 +1,115 @@
+@import url("https://fonts.googleapis.com/css2?family=Signika+Negative:wght@500&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .Buttons {
+    @apply mr-2 px-6 py-2 mt-5 border-2 border-gold dark:border-tomato rounded-[15px] uppercase text-sm tracking-widest bg-red-800 dark:bg-eerie text-beige transition-all duration-[0.5s] hover:border-beige hover:text-black hover:bg-gold dark:hover:border-beige dark:hover:text-eerie dark:hover:bg-honey;
+  }
+
+  .contactInput {
+    @apply outline-none bg-gold/80 dark:bg-tomato/60 rounded-md border-b px-6 py-4 border-black text-beige placeholder-beige/60 dark:text-honey transition-all duration-[0.5s] focus:border-beige focus:text-black hover:border-beige dark:focus:border-honey dark:focus:text-tomato dark:hover:border-honey overflow-y-scroll overflow-x-hidden scrollbar-thin scrollbar-thumb-beige dark:scrollbar-thumb-honey w-[555px] mb-2;
+  }
+
+  .dropdown {
+    @apply relative ml-3 select-none;
+  }
+
+  .selected {
+    @apply w-[57px] flex justify-between items-center py-3 cursor-pointer font-bold hover:scale-125 text-corn hover:text-black dark:text-beige dark:hover:text-honey transition-all duration-[0.4s];
+  }
+
+  .dropdown-menu {
+    @apply absolute;
+  }
+
+  .dropdown-menu.active {
+    @apply opacity-100 visible translate-y-0 transition-all duration-[0.5s];
+  }
+
+  .dropdown-menu.inactive {
+    @apply opacity-0 invisible -translate-y-5 transition-all duration-[0.5s];
+  }
+
+  .dropdown-item {
+    @apply w-[57px] flex justify-between items-center pb-3 cursor-pointer font-bold hover:scale-125 text-corn hover:text-black dark:text-beige dark:hover:text-honey transition-all duration-[0.3s];
+  }
+
+  .errorMessage {
+    @apply justify-center items-center text-sm ml-1 hidden;
+  }
+  .errorIcon {
+    @apply w-5 text-tomato hidden;
+  }
+  .show {
+    @apply block;
+  }
+  .label {
+    width: 65px;
+    height: 35px;
+    position: relative;
+    display: block;
+    background: #991b1b;
+    border-radius: 200px;
+    box-shadow: inset 0px 5px 10px rgba(24, 24, 24, 0.4),
+      inset 0px -5px 15px rgba(255, 253, 225, 0.2);
+    cursor: pointer;
+    transition: 0.5s;
+    user-select: none;
+  }
+  .label::after {
+    content: "";
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    background: linear-gradient(180deg, #bd1c1c, #991b1b);
+    border-radius: 180px;
+    box-shadow: 0px 5px 10px rgba(24, 24, 24, 0.5);
+    transition: 0.5s;
+  }
+  .input {
+    width: 0;
+    height: 0;
+    visibility: hidden;
+  }
+  .input:checked + .label {
+    background: #181818;
+  }
+  .input:checked + .label::after {
+    left: 62px;
+    transform: translateX(-100%);
+    background: linear-gradient(180deg, #444444, #181818);
+  }
+  .label:active:after {
+    width: 35px;
+  }
+  .svg {
+    position: absolute;
+    top: 6.5px;
+    width: 22px;
+    z-index: 100;
+  }
+  .sun {
+    left: 7px;
+    filter: invert(90%) sepia(10%) saturate(2495%) hue-rotate(353deg)
+      brightness(110%) contrast(90%);
+    transition: 0.5s;
+    display: block;
+  }
+  .moon {
+    left: 36px;
+    display: none;
+  }
+  .input:checked + .label > .sun {
+    display: none;
+  }
+  .input:checked + .label > .moon {
+    filter: invert(98%) sepia(12%) saturate(1141%) hue-rotate(312deg)
+      brightness(102%) contrast(108%);
+    transition: 0.5s;
+    display: block;
+  }
+}
