@@ -1,12 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { darkModeSwitch, lightModeSwitch, selectValue } from "../slices/darkModeSlice";
+import { darkModeSwitch, lightModeSwitch, themeValue } from "../slices/darkModeSlice";
 
 type Props = {};
 
 function Switcher({}: Props) {
-  const darkMode = useSelector(selectValue);
+  const darkMode = useSelector(themeValue);
   const dispatch = useDispatch();
 
   return (
