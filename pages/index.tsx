@@ -14,7 +14,8 @@ import { fetchProjects } from "../utils/fetchProjects";
 import { fetchSkills } from "../utils/fetchSkills";
 import { fetchSocial } from "../utils/fetchSocials";
 import { useSelector } from "react-redux";
-import { themeValue } from "../slices/darkModeSlice";
+import { themeState } from "../slices/darkModeSlice";
+import "../translation";
 
 type Props = {
   pageInfo: PageInfo;
@@ -24,7 +25,7 @@ type Props = {
 };
 
 const Home = ({ pageInfo, skills, projects, socials }: Props) => {
-  const darkMode = useSelector(themeValue);
+  const darkMode = useSelector(themeState);
 
   return (
     <div className={darkMode ? "dark" : ""}>

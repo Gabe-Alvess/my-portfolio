@@ -6,14 +6,14 @@ import Link from "next/link";
 import { PageInfo } from "../typings";
 import { urlFor } from "../sanity";
 import { useSelector } from "react-redux";
-import { themeValue } from "../slices/darkModeSlice";
+import { themeState } from "../slices/darkModeSlice";
 
 type Props = {
   pageInfo: PageInfo;
 };
 
 export default function Intro({ pageInfo }: Props) {
-  const darkMode = useSelector(themeValue);
+  const darkMode = useSelector(themeState);
   const [text] = useTypewriter({
     words: [
       pageInfo?.typewriter_1,

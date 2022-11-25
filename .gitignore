@@ -12,7 +12,8 @@
 /.next/
 /out/
 
-sanity/node_modules
+/sanity/node_modules
+/sanity/.yarn
 
 # production
 /build

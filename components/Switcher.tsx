@@ -1,12 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { darkModeSwitch, lightModeSwitch, themeValue } from "../slices/darkModeSlice";
+import { darkTheme, lightTheme, themeState } from "../slices/darkModeSlice";
 
 type Props = {};
 
 function Switcher({}: Props) {
-  const darkMode = useSelector(themeValue);
+  const darkMode = useSelector(themeState);
   const dispatch = useDispatch();
 
   return (
@@ -17,9 +17,9 @@ function Switcher({}: Props) {
         className="label"
         onClick={() => {
           if (darkMode === false) {
-            dispatch(darkModeSwitch());
+            dispatch(darkTheme());
           } else {
-            dispatch(lightModeSwitch());
+            dispatch(lightTheme());
           }
         }}
       >

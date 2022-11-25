@@ -1,29 +1,29 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 
-export type darkModeState = {
+export type themeState = {
   value: boolean;
 };
 
-const initialState: darkModeState = {
+const initialState: themeState = {
   value: false,
 };
 
 export const darkModeSlice = createSlice({
-  name: "darkMode",
+  name: "theme",
   initialState,
   reducers: {
-    darkModeSwitch: (state) => {
+    darkTheme: (state) => {
       state.value = true;
     },
-    lightModeSwitch: (state) => {
+    lightTheme: (state) => {
       state.value = false;
     },
   },
 });
 
-export const { darkModeSwitch, lightModeSwitch } = darkModeSlice.actions;
+export const { darkTheme, lightTheme } = darkModeSlice.actions;
 // selector
-export const themeValue = (state: RootState) => state.darkMode.value;
+export const themeState = (state: RootState) => state.theme.value;
 
 export default darkModeSlice.reducer;

@@ -1,22 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState, useEffect, useRef } from "react";
-import { useSelector } from "react-redux";
-import { languageValue } from "../slices/languageSlice";
 
-type Props = {
-  selected: string;
-  setSelected: any;
-  selectedLang: string;
-  setSelectedLang: any;
-};
+type Props = {};
 
-export default function Dropdown({
-  selected,
-  setSelected,
-  selectedLang,
-  setSelectedLang,
-}: Props) {
+export default function Dropdown({}: Props) {
+  const [selected, setSelected] = useState("/images/US_FLAG.svg");
+  const [selectedLang, setSelectedLang] = useState("EN");
   const [open, setOpen] = useState(false);
 
   let menuRef = useRef<HTMLDivElement>(null);
@@ -33,7 +23,7 @@ export default function Dropdown({
       document.removeEventListener("mousedown", handler);
     };
   });
-  const language = useSelector(languageValue);
+
   const flags = [
     {
       id: 0,

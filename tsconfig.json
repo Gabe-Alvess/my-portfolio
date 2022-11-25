@@ -20,6 +20,6 @@
     "**/*.ts",
     "**/*.tsx",
     "components/notifications/NotificationProvider.tsx"
-  ],
+, "i18next.js"  ],
   "exclude": ["node_modules"]
 }
