@@ -5,15 +5,10 @@ const nextConfig = {
   images: {
     domains: ["cdn.sanity.io"],
   },
-};
-
-module.exports = {
   i18n: {
     locales: ["en-US", "nl-BE", "fr-BE", "pt-BR"],
-    defaultLocales: "en-US",
+    defaultLocale: "en-US",
   },
 };
 
 module.exports = nextConfig;
-
-

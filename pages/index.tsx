@@ -8,23 +8,28 @@ import Header from "../components/Header";
 import Main from "../components/Main";
 import Projects from "../components/Projects";
 import Skills from "../components/Skills";
-import { PageInfo, Project, Skill, Social } from "../typings";
+import { PageInfo, PageInfoFR, PageInfoNL, PageInfoPT, Project, Skill, Social } from "../typings";
 import { fetchPageInfo } from "../utils/fetchPageInfo";
 import { fetchProjects } from "../utils/fetchProjects";
 import { fetchSkills } from "../utils/fetchSkills";
 import { fetchSocial } from "../utils/fetchSocials";
 import { useSelector } from "react-redux";
 import { themeState } from "../slices/darkModeSlice";
-import "../translation";
+import { fetchPageInfoPT } from "../utils/fetchPageInfoPT";
+import { fetchPageInfoFR } from "../utils/fetchPageInfoFR";
+import { fetchPageInfoNL } from "../utils/fetchPageInfoNL";
 
 type Props = {
   pageInfo: PageInfo;
+  pageInfoNL: PageInfoNL;
+  pageInfoFR: PageInfoFR;
+  pageInfoPT: PageInfoPT;
   skills: Skill[];
   projects: Project[];
   socials: Social[];
 };
 
-const Home = ({ pageInfo, skills, projects, socials }: Props) => {
+const Home = ({ pageInfo, pageInfoNL, pageInfoFR, pageInfoPT, skills, projects, socials }: Props) => {
   const darkMode = useSelector(themeState);
 
   return (
@@ -35,7 +40,7 @@ const Home = ({ pageInfo, skills, projects, socials }: Props) => {
         </Head>
         <Header socials={socials} pageInfo={pageInfo} />
         <section id="intro" className="snap-start">
-          <Main pageInfo={pageInfo} />
+          <Main pageInfo={pageInfo} pageInfoNL={pageInfoNL} pageInfoFR={pageInfoFR} pageInfoPT={pageInfoPT} />
         </section>
         <section id="about" className="snap-center">
           <About pageInfo={pageInfo} />
@@ -65,6 +70,9 @@ export default Home;
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
   const pageInfo: PageInfo = await fetchPageInfo();
+  const pageInfoNL: PageInfoNL = await fetchPageInfoNL();
+  const pageInfoFR: PageInfoFR = await fetchPageInfoFR();
+  const pageInfoPT: PageInfoPT = await fetchPageInfoPT();
   const skills: Skill[] = await fetchSkills();
   const projects: Project[] = await fetchProjects();
   const socials: Social[] = await fetchSocial();
@@ -72,6 +80,9 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   return {
     props: {
       pageInfo,
+      pageInfoNL,
+      pageInfoFR,
+      pageInfoPT,
       skills,
       projects,
       socials,

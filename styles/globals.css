@@ -17,7 +17,7 @@
   }
 
   .selected {
-    @apply w-[57px] flex justify-between items-center py-3 cursor-pointer font-bold hover:scale-125 text-corn hover:text-black dark:text-beige dark:hover:text-honey transition-all duration-[0.4s];
+    @apply w-[57px] flex justify-between items-center py-3 cursor-pointer font-bold uppercase hover:scale-125 text-corn hover:text-black dark:text-beige dark:hover:text-honey transition-all duration-[0.4s];
   }
 
   .dropdown-menu {
@@ -33,7 +33,7 @@
   }
 
   .dropdown-item {
-    @apply w-[57px] flex justify-between items-center pb-3 cursor-pointer font-bold hover:scale-125 text-corn hover:text-black dark:text-beige dark:hover:text-honey transition-all duration-[0.3s];
+    @apply w-[57px] flex justify-between items-center pb-3 cursor-pointer uppercase font-bold hover:scale-125 text-corn hover:text-black dark:text-beige dark:hover:text-honey transition-all duration-[0.3s];
   }
 
   .errorMessage {

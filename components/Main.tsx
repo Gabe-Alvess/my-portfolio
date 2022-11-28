@@ -3,16 +3,25 @@ import { useTypewriter, Cursor } from "react-simple-typewriter";
 import BackgroundCircles from "./BackgroundCircles";
 import Image from "next/image";
 import Link from "next/link";
-import { PageInfo } from "../typings";
+import { PageInfo, PageInfoFR, PageInfoNL, PageInfoPT } from "../typings";
 import { urlFor } from "../sanity";
 import { useSelector } from "react-redux";
 import { themeState } from "../slices/darkModeSlice";
+import { useRouter } from "next/router";
 
 type Props = {
   pageInfo: PageInfo;
+  pageInfoNL: PageInfoNL;
+  pageInfoFR: PageInfoFR;
+  pageInfoPT: PageInfoPT;
 };
 
-export default function Intro({ pageInfo }: Props) {
+export default function Intro({
+  pageInfo,
+  pageInfoNL,
+  pageInfoFR,
+  pageInfoPT,
+}: Props) {
   const darkMode = useSelector(themeState);
   const [text] = useTypewriter({
     words: [
@@ -26,6 +35,19 @@ export default function Intro({ pageInfo }: Props) {
     deleteSpeed: 50,
     delaySpeed: 2000,
   });
+
+  let router = useRouter();
+
+  let role =
+    router.locale === "en-US"
+      ? pageInfo?.role
+      : router.locale === "nl-BE"
+      ? pageInfoNL?.role
+      : router.locale === "fr-BE"
+      ? pageInfoFR?.role
+      : router.locale === "pt-BR"
+      ? pageInfoPT?.role
+      : "";
 
   return (
     <div className="h-screen flex flex-col space-y-8 items-center justify-center text-center overflow-hidden">
@@ -41,7 +63,7 @@ export default function Intro({ pageInfo }: Props) {
       </div>
       <div className="z-20">
         <h1 className="text-beige dark:text-beige text-base uppercase pb-2 tracking-[15px] animate-pulse font-bold">
-          {pageInfo?.role}
+          {role}
         </h1>
         <h2 className="text-5xl lg:text-6xl font-semibold px-10">
           <span className="mr-3 text-corn dark:text-honey text-[29px] md:text-[37px] xl:text-6xl ">

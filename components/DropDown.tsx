@@ -6,7 +6,7 @@ type Props = {};
 
 export default function Dropdown({}: Props) {
   const [selected, setSelected] = useState("/images/US_FLAG.svg");
-  const [selectedLang, setSelectedLang] = useState("EN");
+  const [selectedLang, setSelectedLang] = useState("en");
   const [open, setOpen] = useState(false);
 
   let menuRef = useRef<HTMLDivElement>(null);
@@ -28,25 +28,29 @@ export default function Dropdown({}: Props) {
     {
       id: 0,
       imgUrl: "/images/US_FLAG.svg",
-      lang: "EN",
+      locale: "en-US",
+      lang: "en",
       alt: "English",
     },
     {
       id: 1,
       imgUrl: "/images/NL_FLAG.svg",
-      lang: "NL",
+      locale: "nl-BE",
+      lang: "nl",
       alt: "Dutch",
     },
     {
       id: 2,
       imgUrl: "/images/FR_FLAG.svg",
-      lang: "FR",
+      locale: "fr-BE",
+      lang: "fr",
       alt: "French",
     },
     {
       id: 3,
       imgUrl: "/images/BR_FLAG.svg",
-      lang: "PT",
+      locale: "pt-BR",
+      lang: "pt",
       alt: "Portuguese",
     },
   ];
@@ -61,7 +65,7 @@ export default function Dropdown({}: Props) {
       </div>
       <div className={`dropdown-menu ${open ? "active" : "inactive"}`}>
         {flagList.map((id) => (
-          <Link href={`#${id.lang}`} key={id.id}>
+          <Link href={`${id.locale}`} key={id.id}>
             <div
               onClick={() => {
                 setSelected(id.imgUrl);
