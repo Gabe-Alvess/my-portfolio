@@ -1,23 +1,31 @@
+import {
+  PageInfo,
+  PageInfoFR,
+  PageInfoNL,
+  PageInfoPT,
+  Project,
+  Skill,
+  Social,
+} from "../typings";
 import { ChevronDoubleUpIcon } from "@heroicons/react/24/solid";
 import type { GetStaticProps } from "next";
 import Head from "next/head";
 import Link from "next/link";
 import About from "../components/About";
-import ContactMe from "../components/ContactMe";
+import Contact from "../components/Contact";
 import Header from "../components/Header";
 import Main from "../components/Main";
 import Projects from "../components/Projects";
 import Skills from "../components/Skills";
-import { PageInfo, PageInfoFR, PageInfoNL, PageInfoPT, Project, Skill, Social } from "../typings";
 import { fetchPageInfo } from "../utils/fetchPageInfo";
+import { fetchPageInfoPT } from "../utils/fetchPageInfoPT";
+import { fetchPageInfoFR } from "../utils/fetchPageInfoFR";
+import { fetchPageInfoNL } from "../utils/fetchPageInfoNL";
 import { fetchProjects } from "../utils/fetchProjects";
 import { fetchSkills } from "../utils/fetchSkills";
 import { fetchSocial } from "../utils/fetchSocials";
 import { useSelector } from "react-redux";
 import { themeState } from "../slices/darkModeSlice";
-import { fetchPageInfoPT } from "../utils/fetchPageInfoPT";
-import { fetchPageInfoFR } from "../utils/fetchPageInfoFR";
-import { fetchPageInfoNL } from "../utils/fetchPageInfoNL";
 
 type Props = {
   pageInfo: PageInfo;
@@ -29,32 +37,73 @@ type Props = {
   socials: Social[];
 };
 
-const Home = ({ pageInfo, pageInfoNL, pageInfoFR, pageInfoPT, skills, projects, socials }: Props) => {
+const Home = ({
+  pageInfo,
+  pageInfoNL,
+  pageInfoFR,
+  pageInfoPT,
+  skills,
+  projects,
+  socials,
+}: Props) => {
   const darkMode = useSelector(themeState);
 
   return (
     <div className={darkMode ? "dark" : ""}>
-      <div className="bg-red-800 text-beige dark:bg-eerie h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0 font-Signika scrollbar-thin scrollbar-thumb-gold/80 dark:scrollbar-thumb-tomato">
+      <div className="bg-red-800 text-beige dark:bg-eerie h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden scroll-smooth z-0 font-Signika scrollbar-thin scrollbar-thumb-gold/80 dark:scrollbar-thumb-tomato">
         <Head>
           <title>{pageInfo?.name} - Portfolio</title>
         </Head>
-        <Header socials={socials} pageInfo={pageInfo} />
-        <section id="intro" className="snap-start">
-          <Main pageInfo={pageInfo} pageInfoNL={pageInfoNL} pageInfoFR={pageInfoFR} pageInfoPT={pageInfoPT} />
+        <Header
+          socials={socials}
+          pageInfo={pageInfo}
+          pageInfoNL={pageInfoNL}
+          pageInfoFR={pageInfoFR}
+          pageInfoPT={pageInfoPT}
+        />
+        <section id="main" className="snap-start">
+          <Main
+            pageInfo={pageInfo}
+            pageInfoNL={pageInfoNL}
+            pageInfoFR={pageInfoFR}
+            pageInfoPT={pageInfoPT}
+          />
         </section>
         <section id="about" className="snap-center">
-          <About pageInfo={pageInfo} />
+          <About
+            pageInfo={pageInfo}
+            pageInfoNL={pageInfoNL}
+            pageInfoFR={pageInfoFR}
+            pageInfoPT={pageInfoPT}
+          />
         </section>
         <section id="skills" className="snap-start">
-          <Skills skills={skills} pageInfo={pageInfo} />
+          <Skills
+            skills={skills}
+            pageInfo={pageInfo}
+            pageInfoNL={pageInfoNL}
+            pageInfoFR={pageInfoFR}
+            pageInfoPT={pageInfoPT}
+          />
         </section>
         <section id="projects" className="snap-start">
-          <Projects projects={projects} pageInfo={pageInfo} />
+          <Projects
+            projects={projects}
+            pageInfo={pageInfo}
+            pageInfoNL={pageInfoNL}
+            pageInfoFR={pageInfoFR}
+            pageInfoPT={pageInfoPT}
+          />
         </section>
         <section id="contact" className="snap-start">
-          <ContactMe pageInfo={pageInfo} />
+          <Contact
+            pageInfo={pageInfo}
+            pageInfoNL={pageInfoNL}
+            pageInfoFR={pageInfoFR}
+            pageInfoPT={pageInfoPT}
+          />
         </section>
-        <Link href="#intro">
+        <Link href="#main">
           <footer className="sticky bottom-5 w-full cursor-pointer">
             <div className="flex items-center justify-center">
               <ChevronDoubleUpIcon className="w-10 h-10 text-gold/40 hover:text-gold dark:text-honey/40  dark:hover:text-honey cursor-pointer transition-all duration-[0.5s]" />

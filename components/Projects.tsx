@@ -1,16 +1,77 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
-import Link from "next/link";
+import { useRouter } from "next/router";
 import React from "react";
 import { urlFor } from "../sanity";
-import { PageInfo, Project } from "../typings";
+import {
+  PageInfo,
+  PageInfoFR,
+  PageInfoNL,
+  PageInfoPT,
+  Project,
+} from "../typings";
 
 type Props = {
   projects: Project[];
   pageInfo: PageInfo;
+  pageInfoNL: PageInfoNL;
+  pageInfoFR: PageInfoFR;
+  pageInfoPT: PageInfoPT;
 };
 
-function Projects({ projects, pageInfo }: Props) {
+function Projects({
+  projects,
+  pageInfo,
+  pageInfoNL,
+  pageInfoFR,
+  pageInfoPT,
+}: Props) {
+  let router = useRouter();
+
+  const title =
+    router.locale === "en"
+      ? pageInfo?.projectsTitle
+      : router.locale === "nl"
+      ? pageInfoNL?.projectsTitle
+      : router.locale === "fr"
+      ? pageInfoFR?.projectsTitle
+      : router.locale === "pt"
+      ? pageInfoPT?.projectsTitle
+      : "";
+
+  const subtitle =
+    router.locale === "en"
+      ? pageInfo?.projectsSubtitle
+      : router.locale === "nl"
+      ? pageInfoNL?.projectsSubtitle
+      : router.locale === "fr"
+      ? pageInfoFR?.projectsSubtitle
+      : router.locale === "pt"
+      ? pageInfoPT?.projectsSubtitle
+      : "";
+
+  const word1 =
+    router.locale === "en"
+      ? pageInfo?.word_1
+      : router.locale === "nl"
+      ? pageInfoNL?.word_1
+      : router.locale === "fr"
+      ? pageInfoFR?.word_1
+      : router.locale === "pt"
+      ? pageInfoPT?.word_1
+      : "";
+
+  const word2 =
+    router.locale === "en"
+      ? pageInfo?.word_2
+      : router.locale === "nl"
+      ? pageInfoNL?.word_2
+      : router.locale === "fr"
+      ? pageInfoFR?.word_2
+      : router.locale === "pt"
+      ? pageInfoPT?.word_2
+      : "";
+
   return (
     <div className="flex flex-col overflow-hidden  relative h-screen text-left md:flex-row max-w-full justify-evenly mx-auto items-center z-0">
       <motion.h2
@@ -20,7 +81,7 @@ function Projects({ projects, pageInfo }: Props) {
         viewport={{ once: true }}
         className="absolute top-24 uppercase tracking-[20px] text-gold dark:text-tomato text-2xl font-bold"
       >
-        {pageInfo?.projectsTitle}
+        {title}
       </motion.h2>
       <motion.h3
         initial={{ scale: 0, opacity: 0 }}
@@ -29,10 +90,10 @@ function Projects({ projects, pageInfo }: Props) {
         viewport={{ once: true }}
         className="absolute top-36 uppercase tracking-[3px] dark:text-honey text-base"
       >
-        {pageInfo?.projectsSubtitle}
+        {subtitle}
       </motion.h3>
 
-      <div className="relative w-full flex overflow-x-scroll overflow-y-hidden snap-x snap-mandatory z-20 scrollbar-thin scrollbar-thumb-gold/80 dark:scrollbar-thumb-tomato/70">
+      <div className="relative w-full flex overflow-x-auto scroll-smooth snap-x snap-mandatory z-20 scrollbar-thin scrollbar-thumb-gold/80 dark:scrollbar-thumb-tomato/70">
         {projects?.map((project, i) => (
           <div
             key={project._id}
@@ -70,10 +131,19 @@ function Projects({ projects, pageInfo }: Props) {
             >
               <h4 className=" flex justify-center text-gold dark:text-honey text-3xl font-semibold">
                 <p>
-                  {pageInfo?.word_1} {i + 1} {pageInfo?.word_2}{" "}
-                  {projects.length}:
+                  {word1} {i + 1} {word2} {projects.length}:
                 </p>
-                <p className="pl-2 text-beige">{project?.projectTitle}</p>
+                <p className="pl-2 text-beige">
+                  {router.locale === "en"
+                    ? project?.projectTitle
+                    : router.locale === "nl"
+                    ? project?.projectTitleNL
+                    : router.locale === "fr"
+                    ? project?.projectTitleFR
+                    : router.locale === "pt"
+                    ? project?.projectTitlePT
+                    : ""}
+                </p>
               </h4>
 
               <div className="flex items-center space-x-2 justify-center">
@@ -89,26 +159,15 @@ function Projects({ projects, pageInfo }: Props) {
               </div>
 
               <p className="text-lg text-center md:text-left max-h-[120px] overflow-y-scroll overflow-x-hidden scrollbar-thin">
-                {/* {project?.summary} */}
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut
-                voluptas doloremque pariatur reiciendis numquam officiis ab
-                culpa debitis. Voluptate vero veritatis magnam nulla facere
-                molestiae odit! Ex fugit doloribus soluta. Lorem ipsum dolor sit
-                amet consectetur adipisicing elit. Molestiae, neque libero?
-                Quidem voluptatem eveniet in ad ipsam nobis, adipisci eius
-                aliquam harum perferendis accusantium nisi doloremque sint
-                consequatur praesentium voluptates! Lorem ipsum, dolor sit amet
-                consectetur adipisicing elit. Animi nostrum odit iusto voluptate
-                blanditiis repellendus possimus! Aut quae, facilis possimus
-                porro consequatur magnam magni nesciunt debitis sint blanditiis
-                deserunt! Porro? Lorem, ipsum dolor sit amet consectetur
-                adipisicing elit. Commodi hic reprehenderit harum nemo, error
-                sint. Libero, nostrum temporibus! Obcaecati eos nisi dolore
-                omnis quia in sunt expedita eum nemo ut! Lorem ipsum dolor sit
-                amet consectetur adipisicing elit. Provident temporibus sapiente
-                quia officia totam. Cum nihil fugiat quasi laudantium voluptates
-                ipsum expedita enim assumenda nesciunt voluptas, ea ratione,
-                molestias ullam?
+                {router.locale === "en"
+                  ? project?.summary
+                  : router.locale === "nl"
+                  ? project?.summaryNL
+                  : router.locale === "fr"
+                  ? project?.summaryFR
+                  : router.locale === "pt"
+                  ? project?.summaryPT
+                  : ""}
               </p>
             </motion.div>
           </div>

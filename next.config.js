@@ -1,4 +1,5 @@
 /** @type {import('next').NextConfig} */
+
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
@@ -6,8 +7,8 @@ const nextConfig = {
     domains: ["cdn.sanity.io"],
   },
   i18n: {
-    locales: ["en-US", "nl-BE", "fr-BE", "pt-BR"],
-    defaultLocale: "en-US",
+    locales: ["en", "nl", "fr", "pt"],
+    defaultLocale: "en",
   },
 };
 

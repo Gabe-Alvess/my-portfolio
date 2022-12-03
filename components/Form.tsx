@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useRef, useEffect } from "react";
-import { PageInfo } from "../typings";
+import { PageInfo, PageInfoFR, PageInfoNL, PageInfoPT } from "../typings";
 import emailjs from "@emailjs/browser";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -9,9 +9,13 @@ import { Slide } from "react-toastify";
 import { MessageValidationSchema } from "../validations/MessageValidation";
 import { XCircleIcon } from "@heroicons/react/24/solid";
 import "react-toastify/dist/ReactToastify.css";
+import { useRouter } from "next/router";
 
 type Props = {
   pageInfo: PageInfo;
+  pageInfoNL: PageInfoNL;
+  pageInfoFR: PageInfoFR;
+  pageInfoPT: PageInfoPT;
 };
 
 type FormValues = {
@@ -22,7 +26,12 @@ type FormValues = {
   message: string;
 };
 
-function FormComponent({ pageInfo }: Props) {
+function FormComponent({
+  pageInfo,
+  pageInfoNL,
+  pageInfoFR,
+  pageInfoPT,
+}: Props) {
   const {
     register,
     handleSubmit,
@@ -96,6 +105,63 @@ function FormComponent({ pageInfo }: Props) {
         });
   };
 
+  let router = useRouter();
+
+  const name =
+    router.locale === "en"
+      ? pageInfo?.placeholderName
+      : router.locale === "nl"
+      ? pageInfoNL?.placeholderName
+      : router.locale === "fr"
+      ? pageInfoFR?.placeholderName
+      : router.locale === "pt"
+      ? pageInfoPT?.placeholderName
+      : "";
+
+  const surname =
+    router.locale === "en"
+      ? pageInfo?.placeholderSurname
+      : router.locale === "nl"
+      ? pageInfoNL?.placeholderSurname
+      : router.locale === "fr"
+      ? pageInfoFR?.placeholderSurname
+      : router.locale === "pt"
+      ? pageInfoPT?.placeholderSurname
+      : "";
+
+  const subject =
+    router.locale === "en"
+      ? pageInfo?.placeholderSubject
+      : router.locale === "nl"
+      ? pageInfoNL?.placeholderSubject
+      : router.locale === "fr"
+      ? pageInfoFR?.placeholderSubject
+      : router.locale === "pt"
+      ? pageInfoPT?.placeholderSubject
+      : "";
+
+  const message =
+    router.locale === "en"
+      ? pageInfo?.placeholderMessage
+      : router.locale === "nl"
+      ? pageInfoNL?.placeholderMessage
+      : router.locale === "fr"
+      ? pageInfoFR?.placeholderMessage
+      : router.locale === "pt"
+      ? pageInfoPT?.placeholderMessage
+      : "";
+
+  const submit =
+    router.locale === "en"
+      ? pageInfo?.submitButton
+      : router.locale === "nl"
+      ? pageInfoNL?.submitButton
+      : router.locale === "fr"
+      ? pageInfoFR?.submitButton
+      : router.locale === "pt"
+      ? pageInfoPT?.submitButton
+      : "";
+
   return (
     <form
       ref={formRef}
@@ -107,7 +173,7 @@ function FormComponent({ pageInfo }: Props) {
           <input
             type="text"
             {...register("firstName")}
-            placeholder={pageInfo?.placeholderName}
+            placeholder={name}
             className="contactInput h-[50px] w-[275px]"
           />
 
@@ -128,7 +194,7 @@ function FormComponent({ pageInfo }: Props) {
           <input
             type="text"
             {...register("lastName")}
-            placeholder={pageInfo?.placeholderSurname}
+            placeholder={surname}
             className="contactInput h-[50px] w-[275px]"
           />
 
@@ -166,7 +232,7 @@ function FormComponent({ pageInfo }: Props) {
       <input
         type="text"
         {...register("subject")}
-        placeholder={pageInfo?.placeholderSubject}
+        placeholder={subject}
         className="contactInput h-[40px]"
       />
 
@@ -181,7 +247,7 @@ function FormComponent({ pageInfo }: Props) {
 
       <textarea
         {...register("message")}
-        placeholder={pageInfo?.placeholderMessage}
+        placeholder={message}
         className="contactInput h-[150px]"
       />
 
@@ -198,7 +264,7 @@ function FormComponent({ pageInfo }: Props) {
         type="submit"
         className="w-[552px] uppercase bg-eerie dark:bg-honey py-5 px-10 rounded-md text-beige dark:text-eerie font-bold text-lg hover:bg-green-400 hover:text-black dark:hover:bg-green-700 dark:hover:text-honey hover:scale-[101%] transition-all duration-[0.5s]"
       >
-        {pageInfo?.submitButton}
+        {submit}
       </button>
       <ToastContainer
         position="bottom-left"

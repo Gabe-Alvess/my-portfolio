@@ -1,19 +1,48 @@
 import { SocialIcon } from "react-social-icons";
 import { motion } from "framer-motion";
-import { PageInfo, Social } from "../typings";
+import {
+  PageInfo,
+  PageInfoFR,
+  PageInfoNL,
+  PageInfoPT,
+  Social,
+} from "../typings";
 import Dropdown from "./DropDown";
 import Image from "next/image";
 import Switcher from "./Switcher";
 import { useSelector } from "react-redux";
 import { themeState } from "../slices/darkModeSlice";
+import { useRouter } from "next/router";
 
 type Props = {
   socials: Social[];
   pageInfo: PageInfo;
+  pageInfoNL: PageInfoNL;
+  pageInfoFR: PageInfoFR;
+  pageInfoPT: PageInfoPT;
 };
 
-export default function Header({ socials, pageInfo }: Props) {
+export default function Header({
+  socials,
+  pageInfo,
+  pageInfoNL,
+  pageInfoFR,
+  pageInfoPT,
+}: Props) {
   const darkMode = useSelector(themeState);
+
+  let router = useRouter();
+
+  const text =
+    router.locale === "en"
+      ? pageInfo?.koalenderText
+      : router.locale === "nl"
+      ? pageInfoNL?.koalenderText
+      : router.locale === "fr"
+      ? pageInfoFR?.koalenderText
+      : router.locale === "pt"
+      ? pageInfoPT?.koalenderText
+      : "";
 
   return (
     <header className="sticky top-0 p-5 flex items-center justify-between max-w-7xl mx-auto z-20 xl:items-center">
@@ -80,7 +109,7 @@ export default function Header({ socials, pageInfo }: Props) {
         </a>
         <a href={pageInfo?.koalenderUrl} target={"_blank"} rel={"noreferrer"}>
           <p className="uppercase hidden md:inline-flex text-lg font-semibold text-corn dark:text-beige hover:text-black dark:hover:text-honey transition-all duration-[0.5s] mx-2">
-            {pageInfo?.koalenderText}
+            {text}
           </p>
         </a>
         <Dropdown />

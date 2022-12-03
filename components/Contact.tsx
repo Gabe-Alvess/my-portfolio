@@ -5,14 +5,31 @@ import {
   MapPinIcon,
   EnvelopeIcon,
 } from "@heroicons/react/24/solid";
-import { PageInfo } from "../typings";
-import Form from "./Form";
+import { PageInfo, PageInfoFR, PageInfoNL, PageInfoPT } from "../typings";
+import Form from "../components/Form";
+import { useRouter } from "next/router";
 
 type Props = {
   pageInfo: PageInfo;
+  pageInfoNL: PageInfoNL;
+  pageInfoFR: PageInfoFR;
+  pageInfoPT: PageInfoPT;
 };
 
-function ContactMe({ pageInfo }: Props) {
+function Contact({ pageInfo, pageInfoNL, pageInfoFR, pageInfoPT }: Props) {
+  let router = useRouter();
+
+  const title =
+    router.locale === "en"
+      ? pageInfo?.contactTitle
+      : router.locale === "nl"
+      ? pageInfoNL?.contactTitle
+      : router.locale === "fr"
+      ? pageInfoFR?.contactTitle
+      : router.locale === "pt"
+      ? pageInfoPT?.contactTitle
+      : "";
+
   return (
     <div className="h-screen relative flex justify-evenly items-center text-center md:text-left md:flex-row max-w-7xl px-10 mx-auto">
       <motion.h3
@@ -22,7 +39,7 @@ function ContactMe({ pageInfo }: Props) {
         viewport={{ once: true }}
         className="absolute top-24 uppercase tracking-[20px] text-gold dark:text-tomato text-2xl font-bold"
       >
-        {pageInfo.contactTitle}
+        {title}
       </motion.h3>
 
       <motion.div
@@ -52,10 +69,15 @@ function ContactMe({ pageInfo }: Props) {
             <p className="text-2xl">{pageInfo?.phoneNumber}</p>
           </div>
         </div>
-        <Form pageInfo={pageInfo} />
+        <Form
+          pageInfo={pageInfo}
+          pageInfoNL={pageInfoNL}
+          pageInfoFR={pageInfoFR}
+          pageInfoPT={pageInfoPT}
+        />
       </motion.div>
     </div>
   );
 }
 
-export default ContactMe;
+export default Contact;

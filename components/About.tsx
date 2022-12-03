@@ -1,14 +1,53 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { PageInfo } from "../typings";
+import { PageInfo, PageInfoFR, PageInfoNL, PageInfoPT } from "../typings";
 import { urlFor } from "../sanity";
+import { useRouter } from "next/router";
 
 type Props = {
   pageInfo: PageInfo;
+  pageInfoNL: PageInfoNL;
+  pageInfoFR: PageInfoFR;
+  pageInfoPT: PageInfoPT;
 };
 
-export default function About({ pageInfo }: Props) {
+function About({ pageInfo, pageInfoNL, pageInfoFR, pageInfoPT }: Props) {
+  let router = useRouter();
+
+  const title =
+    router.locale === "en"
+      ? pageInfo?.aboutTitle
+      : router.locale === "nl"
+      ? pageInfoNL?.aboutTitle
+      : router.locale === "fr"
+      ? pageInfoFR?.aboutTitle
+      : router.locale === "pt"
+      ? pageInfoPT?.aboutTitle
+      : "";
+
+  const subtitle =
+    router.locale === "en"
+      ? pageInfo?.aboutSubtitle
+      : router.locale === "nl"
+      ? pageInfoNL?.aboutSubtitle
+      : router.locale === "fr"
+      ? pageInfoFR?.aboutSubtitle
+      : router.locale === "pt"
+      ? pageInfoPT?.aboutSubtitle
+      : "";
+
+  const info =
+    router.locale === "en"
+      ? pageInfo?.backgroundInformation
+      : router.locale === "nl"
+      ? pageInfoNL?.backgroundInformation
+      : router.locale === "fr"
+      ? pageInfoFR?.backgroundInformation
+      : router.locale === "pt"
+      ? pageInfoPT?.backgroundInformation
+      : "";
+
   return (
     <div className="flex flex-col relative h-screen text-center md:text-left md:flex-row max-w-7xl px-10 justify-evenly mx-auto items-center">
       <motion.h3
@@ -18,7 +57,7 @@ export default function About({ pageInfo }: Props) {
         viewport={{ once: true }}
         className="absolute top-24 uppercase tracking-[20px] text-gold dark:text-tomato text-2xl font-bold"
       >
-        {pageInfo?.aboutTitle}
+        {title}
       </motion.h3>
 
       <motion.div
@@ -51,7 +90,7 @@ export default function About({ pageInfo }: Props) {
           viewport={{ once: true }}
           className="text-4xl font-semibold text-corn dark:text-honey "
         >
-          {pageInfo?.aboutSubtitle}
+          {subtitle}
         </motion.h4>
         <motion.p
           initial={{ y: 130, opacity: 0 }}
@@ -60,11 +99,11 @@ export default function About({ pageInfo }: Props) {
           viewport={{ once: true }}
           className="text-xl font-semibold"
         >
-          {/* {pageInfo?.backgroundInformation} */}
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae ratione tempore ullam, culpa quam eveniet non amet nobis laboriosam officia praesentium accusantium nemo commodi, laudantium ipsum illo ad aut exercitationem. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorum vel nihil voluptates fugiat, odit mollitia reprehenderit alias cum eius voluptate earum vitae eos sint provident deserunt consequatur quidem veniam illo.
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic possimus ex totam debitis doloremque aperiam repudiandae excepturi corporis nemo. Esse, deserunt. Odio omnis magnam delectus excepturi at consectetur dolor sint. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab sint sed et laborum ex vel voluptates veritatis, aspernatur magnam reiciendis rem quibusdam odio velit quas adipisci. Temporibus sint provident ab?
+          {info}
         </motion.p>
       </div>
     </div>
   );
 }
+
+export default About;
