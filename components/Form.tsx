@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useRef, useEffect } from "react";
+import React, { useRef } from "react";
 import { PageInfo, PageInfoFR, PageInfoNL, PageInfoPT } from "../typings";
 import emailjs from "@emailjs/browser";
 import { useForm } from "react-hook-form";
