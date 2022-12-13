@@ -11,7 +11,7 @@ type Props = {
 
 function Skill({ skill, directionLeft }: Props) {
   return (
-    <div className="group relative flex cursor-pointer">
+    <div className="group flex cursor-pointer">
       <motion.div
         initial={{
           x: directionLeft ? -200 : 200,
@@ -20,7 +20,7 @@ function Skill({ skill, directionLeft }: Props) {
         whileInView={{ x: 0, opacity: 1 }}
         transition={{ duration: 1 }}
         viewport={{ once: true }}
-        className="w-24 h-24 md:w-28 md:h-28 xl:w-32 xl:h-32 max-h-24 filter group-hover:grayscale transition duration-300 ease-in-out"
+        className="relative w-24 h-24 md:w-28 md:h-28 xl:w-32 xl:h-32 max-h-24 filter group-hover:grayscale transition duration-300 ease-in-out"
       >
         <Image
           className="object-contain"

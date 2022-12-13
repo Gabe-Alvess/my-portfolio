@@ -26,6 +26,7 @@ import { fetchSkills } from "../utils/fetchSkills";
 import { fetchSocial } from "../utils/fetchSocials";
 import { useSelector } from "react-redux";
 import { themeState } from "../slices/darkModeSlice";
+// import { useEffect, useState } from "react";
 
 type Props = {
   pageInfo: PageInfo;
@@ -48,9 +49,23 @@ const Home = ({
 }: Props) => {
   const darkMode = useSelector(themeState);
 
+  // const [showTopBtn, setShowTopBtn] = useState(false);
+
+  // useEffect(() => {
+  //   window.addEventListener("scroll", () => {
+  //     if (window.scrollY > 400) {
+  //       setShowTopBtn(true);
+  //     } else {
+  //       setShowTopBtn(false);
+  //     }
+  //   });
+  // }, []);
+
+  // console.log(showTopBtn)
+
   return (
     <div className={darkMode ? "dark" : ""}>
-      <div className="bg-red-800 text-beige dark:bg-eerie h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden scroll-smooth z-0 font-Signika scrollbar-thin scrollbar-thumb-gold/80 dark:scrollbar-thumb-tomato">
+      <div className="bg-red-800 text-beige dark:bg-eerie h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0 font-Signika scrollbar-thin scrollbar-thumb-gold/80 dark:scrollbar-thumb-tomato">
         <Head>
           <title>{pageInfo?.name} - Portfolio</title>
         </Head>
@@ -106,7 +121,9 @@ const Home = ({
         <Link href="#main">
           <footer className="sticky bottom-5 w-full cursor-pointer">
             <div className="flex items-center justify-center">
-              <ChevronDoubleUpIcon className="w-10 h-10 text-gold/40 hover:text-gold dark:text-honey/40  dark:hover:text-honey cursor-pointer transition-all duration-[0.5s]" />
+              <ChevronDoubleUpIcon
+                className={`w-10 h-10 text-gold/40 hover:text-gold dark:text-honey/40  dark:hover:text-honey cursor-pointer transition-all duration-[0.5s]`}
+              />
             </div>
           </footer>
         </Link>
