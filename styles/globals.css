@@ -4,6 +4,10 @@
 @tailwind utilities;
 
 @layer components {
+  .wrapper {
+    @apply h-screen snap-y snap-mandatory scrollbar font-Signika bg-red-800 text-beige dark:bg-eerie scrollbar-thumb-gold/80 dark:scrollbar-thumb-tomato/80 hover:scrollbar-thumb-gold  hover:dark:scrollbar-thumb-tomato;
+  }
+
   .Buttons {
     @apply mr-2 px-6 py-2 mt-5 border-2 border-gold dark:border-tomato rounded-[15px] uppercase text-sm tracking-widest bg-red-800 dark:bg-eerie text-beige transition-all duration-[0.5s] hover:border-beige hover:text-black hover:bg-gold dark:hover:border-beige dark:hover:text-eerie dark:hover:bg-honey;
   }
@@ -39,12 +43,20 @@
   .errorMessage {
     @apply justify-center items-center text-sm ml-1 hidden;
   }
+
   .errorIcon {
     @apply w-5 text-tomato hidden;
   }
+
   .show {
     @apply block;
   }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 100vw;
+    border: 4px solid rgba(31, 41, 55, 0.2);
+  }
+
   .label {
     width: 65px;
     height: 35px;

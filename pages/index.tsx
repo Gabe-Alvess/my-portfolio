@@ -1,32 +1,10 @@
-import {
-  PageInfo,
-  PageInfoFR,
-  PageInfoNL,
-  PageInfoPT,
-  Project,
-  Skill,
-  Social,
-} from "../typings";
-import { ChevronDoubleUpIcon } from "@heroicons/react/24/solid";
-import type { GetStaticProps } from "next";
-import Head from "next/head";
-import Link from "next/link";
-import About from "../components/About";
-import Contact from "../components/Contact";
-import Header from "../components/Header";
-import Main from "../components/Main";
-import Projects from "../components/Projects";
-import Skills from "../components/Skills";
-import { fetchPageInfo } from "../utils/fetchPageInfo";
-import { fetchPageInfoPT } from "../utils/fetchPageInfoPT";
-import { fetchPageInfoFR } from "../utils/fetchPageInfoFR";
-import { fetchPageInfoNL } from "../utils/fetchPageInfoNL";
-import { fetchProjects } from "../utils/fetchProjects";
-import { fetchSkills } from "../utils/fetchSkills";
-import { fetchSocial } from "../utils/fetchSocials";
-import { useSelector } from "react-redux";
+import { fetchPageInfo, fetchPageInfoNL, fetchPageInfoFR, fetchPageInfoPT, fetchProjects, fetchSkills, fetchSocial } from "../utils";
+import { PageInfo, PageInfoFR, PageInfoNL, PageInfoPT, Project, Skill, Social } from "../typings";
+import { About, Contact, Header, Main, Projects, Skills, TopButton } from "../components";
 import { themeState } from "../slices/darkModeSlice";
-// import { useEffect, useState } from "react";
+import type { GetStaticProps } from "next";
+import { useSelector } from "react-redux";
+import Head from "next/head";
 
 type Props = {
   pageInfo: PageInfo;
@@ -49,23 +27,9 @@ const Home = ({
 }: Props) => {
   const darkMode = useSelector(themeState);
 
-  // const [showTopBtn, setShowTopBtn] = useState(false);
-
-  // useEffect(() => {
-  //   window.addEventListener("scroll", () => {
-  //     if (window.scrollY > 400) {
-  //       setShowTopBtn(true);
-  //     } else {
-  //       setShowTopBtn(false);
-  //     }
-  //   });
-  // }, []);
-
-  // console.log(showTopBtn)
-
   return (
     <div className={darkMode ? "dark" : ""}>
-      <div className="bg-red-800 text-beige dark:bg-eerie h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0 font-Signika scrollbar-thin scrollbar-thumb-gold/80 dark:scrollbar-thumb-tomato">
+      <div className="wrapper">
         <Head>
           <title>{pageInfo?.name} - Portfolio</title>
         </Head>
@@ -118,15 +82,7 @@ const Home = ({
             pageInfoPT={pageInfoPT}
           />
         </section>
-        <Link href="#main">
-          <footer className="sticky bottom-5 w-full cursor-pointer">
-            <div className="flex items-center justify-center">
-              <ChevronDoubleUpIcon
-                className={`w-10 h-10 text-gold/40 hover:text-gold dark:text-honey/40  dark:hover:text-honey cursor-pointer transition-all duration-[0.5s]`}
-              />
-            </div>
-          </footer>
-        </Link>
+        <TopButton />
       </div>
     </div>
   );
