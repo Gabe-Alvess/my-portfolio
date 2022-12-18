@@ -45,7 +45,7 @@ export const Header = ({
       : "";
 
   return (
-    <header className="sticky top-0 p-5 flex items-center justify-between max-w-7xl mx-auto z-20 xl:items-center">
+    <header className="fixed top-0 w-screen py-5 pr-8 flex justify-between items-center xl:items-center">
       <motion.div
         initial={{
           x: -500,

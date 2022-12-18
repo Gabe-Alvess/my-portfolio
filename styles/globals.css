@@ -9,11 +9,11 @@
   }
 
   .Buttons {
-    @apply mr-2 px-6 py-2 mt-5 border-2 border-gold dark:border-tomato rounded-[15px] uppercase text-sm tracking-widest bg-red-800 dark:bg-eerie text-beige transition-all duration-[0.5s] hover:border-beige hover:text-black hover:bg-gold dark:hover:border-beige dark:hover:text-eerie dark:hover:bg-honey;
+    @apply mr-2 px-6 py-2 mt-5 border-2 border-gold dark:border-tomato rounded-[15px] uppercase text-sm tracking-widest bg-red-800 dark:bg-eerie text-beige transition-all duration-500 hover:border-beige hover:text-black hover:bg-gold dark:hover:border-beige dark:hover:text-eerie dark:hover:bg-honey;
   }
 
   .contactInput {
-    @apply outline-none bg-gold/80 dark:bg-tomato/60 rounded-md border-b px-6 py-4 border-black text-beige placeholder-beige/60 dark:text-honey transition-all duration-[0.5s] focus:border-beige focus:text-black hover:border-beige dark:focus:border-honey dark:focus:text-tomato dark:hover:border-honey overflow-y-scroll overflow-x-hidden scrollbar-thin scrollbar-thumb-beige dark:scrollbar-thumb-honey w-[555px] mb-2;
+    @apply outline-none bg-gold/80 dark:bg-tomato/60 rounded-md border-b px-6 py-4 border-black text-beige placeholder-beige/60 dark:text-honey transition-all duration-500 focus:border-beige focus:text-black hover:border-beige dark:focus:border-honey dark:focus:text-tomato dark:hover:border-honey overflow-y-scroll overflow-x-hidden scrollbar-thin scrollbar-thumb-beige dark:scrollbar-thumb-honey w-[555px] mb-2;
   }
 
   .dropdown {
@@ -21,7 +21,7 @@
   }
 
   .selected {
-    @apply w-[57px] flex justify-between items-center py-3 cursor-pointer font-bold uppercase hover:scale-125 text-corn hover:text-black dark:text-beige dark:hover:text-honey transition-all duration-[0.4s];
+    @apply w-[57px] flex justify-between items-center py-3 cursor-pointer font-bold uppercase hover:scale-125 text-corn hover:text-black dark:text-beige dark:hover:text-honey transition-all duration-300;
   }
 
   .dropdown-menu {
@@ -29,15 +29,15 @@
   }
 
   .dropdown-menu.active {
-    @apply opacity-100 visible translate-y-0 transition-all duration-[0.5s];
+    @apply opacity-100 visible translate-y-0 transition-all duration-500;
   }
 
   .dropdown-menu.inactive {
-    @apply opacity-0 invisible -translate-y-5 transition-all duration-[0.5s];
+    @apply opacity-0 invisible -translate-y-5 transition-all duration-500;
   }
 
   .dropdown-item {
-    @apply w-[57px] flex justify-between items-center pb-3 cursor-pointer uppercase font-bold hover:scale-125 text-corn hover:text-black dark:text-beige dark:hover:text-honey transition-all duration-[0.3s];
+    @apply w-[57px] flex justify-between items-center pb-3 cursor-pointer uppercase font-bold hover:scale-125 text-corn hover:text-black dark:text-beige dark:hover:text-honey transition-all duration-300;
   }
 
   .errorMessage {
@@ -50,6 +50,14 @@
 
   .show {
     @apply block;
+  }
+
+  .topBtn {
+    @apply transition-all duration-500 cursor-pointer rounded-full shadow-sm p-3 bg-black hover:bg-green-500 text-gold hover:text-black dark:text-honey dark:hover:text-white ring-white hover:ring-2;
+  }
+
+  ::-webkit-scrollbar-track {
+    margin-block: 15px;
   }
 
   ::-webkit-scrollbar-thumb {

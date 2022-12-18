@@ -1,16 +1,41 @@
 import { ArrowSmallUpIcon } from "@heroicons/react/24/outline";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-type Props = {};
+type Props = {
+  scrollRef: any;
+};
 
-export const TopButton = ({}: Props) => {
+export const TopButton = ({ scrollRef }: Props) => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const toggleVisibility = () => {
+      if (scrollRef.current.scrollTop > 900) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
+    };
+
+    scrollRef.current.addEventListener("scroll", toggleVisibility);
+  }, [scrollRef]);
+
+  const scrollToTop = () => {
+    scrollRef.current.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
-    <footer className="sticky bottom-5 w-full cursor-pointer">
-      <div className="flex items-center justify-center">
-        <ArrowSmallUpIcon
-          className={`w-6 h-6 text-gold/40 hover:text-gold dark:text-honey/40  dark:hover:text-honey cursor-pointer transition-all duration-[0.5s]`}
-        />
-      </div>
+    <footer className="fixed bottom-2 w-full flex justify-center">
+      <button
+        className={`${isVisible ? "opacity-100" : "opacity-0"} topBtn`}
+        onClick={scrollToTop}
+        type="button"
+      >
+        <ArrowSmallUpIcon className="w-6 h-6" aria-hidden="true" />
+      </button>
     </footer>
   );
 };

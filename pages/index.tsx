@@ -4,6 +4,7 @@ import { About, Contact, Header, Main, Projects, Skills, TopButton } from "../co
 import { themeState } from "../slices/darkModeSlice";
 import type { GetStaticProps } from "next";
 import { useSelector } from "react-redux";
+import { useRef } from "react";
 import Head from "next/head";
 
 type Props = {
@@ -16,20 +17,13 @@ type Props = {
   socials: Social[];
 };
 
-const Home = ({
-  pageInfo,
-  pageInfoNL,
-  pageInfoFR,
-  pageInfoPT,
-  skills,
-  projects,
-  socials,
-}: Props) => {
+const Home = ({ pageInfo, pageInfoNL, pageInfoFR, pageInfoPT, skills, projects, socials }: Props) => {
   const darkMode = useSelector(themeState);
+  const scrollRef: any = useRef();
 
   return (
     <div className={darkMode ? "dark" : ""}>
-      <div className="wrapper">
+      <div ref={scrollRef} className="wrapper">
         <Head>
           <title>{pageInfo?.name} - Portfolio</title>
         </Head>
@@ -46,6 +40,7 @@ const Home = ({
             pageInfoNL={pageInfoNL}
             pageInfoFR={pageInfoFR}
             pageInfoPT={pageInfoPT}
+            scrollRef={scrollRef}
           />
         </section>
         <section id="about" className="snap-center">
@@ -82,7 +77,7 @@ const Home = ({
             pageInfoPT={pageInfoPT}
           />
         </section>
-        <TopButton />
+        <TopButton scrollRef={scrollRef} />
       </div>
     </div>
   );
