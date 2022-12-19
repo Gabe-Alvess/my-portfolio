@@ -10,13 +10,7 @@ type Props = {
   scrollRef: any;
 };
 
-export const SkillBtn = ({
-  pageInfo,
-  pageInfoNL,
-  pageInfoFR,
-  pageInfoPT,
-  scrollRef,
-}: Props) => {
+export const SkillBtn = ({ pageInfo, pageInfoNL, pageInfoFR, pageInfoPT, scrollRef }: Props) => {
   let router = useRouter();
 
   const skillButton =

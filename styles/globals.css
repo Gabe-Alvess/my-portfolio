@@ -53,7 +53,11 @@
   }
 
   .topBtn {
-    @apply transition-all duration-500 cursor-pointer rounded-full shadow-sm p-3 bg-black hover:bg-green-500 text-gold hover:text-black dark:text-honey dark:hover:text-white ring-white hover:ring-2;
+    @apply transition-all duration-500 cursor-pointer rounded-full shadow-sm p-3 text-gold hover:text-green-400 dark:text-honey dark:hover:text-green-400 ring-green-400 hover:ring-2;
+  }
+
+  .submitBtn {
+    @apply w-[552px] uppercase bg-eerie dark:bg-honey py-5 px-10 rounded-md text-beige dark:text-eerie font-bold text-lg hover:bg-green-400 hover:text-black dark:hover:bg-green-700 dark:hover:text-honey hover:scale-[101%] transition-all duration-500;
   }
 
   ::-webkit-scrollbar-track {
@@ -72,8 +76,7 @@
     display: block;
     background: #991b1b;
     border-radius: 200px;
-    box-shadow: inset 0px 5px 10px rgba(24, 24, 24, 0.4),
-      inset 0px -5px 15px rgba(255, 253, 225, 0.2);
+    box-shadow: inset 0px 5px 10px rgba(24, 24, 24, 0.4), inset 0px -5px 15px rgba(255, 253, 225, 0.2);
     cursor: pointer;
     transition: 0.5s;
     user-select: none;
@@ -114,8 +117,7 @@
   }
   .sun {
     left: 7px;
-    filter: invert(90%) sepia(10%) saturate(2495%) hue-rotate(353deg)
-      brightness(110%) contrast(90%);
+    filter: invert(90%) sepia(10%) saturate(2495%) hue-rotate(353deg) brightness(110%) contrast(90%);
     transition: 0.5s;
     display: block;
   }
@@ -127,8 +129,7 @@
     display: none;
   }
   .input:checked + .label > .moon {
-    filter: invert(98%) sepia(12%) saturate(1141%) hue-rotate(312deg)
-      brightness(102%) contrast(108%);
+    filter: invert(98%) sepia(12%) saturate(1141%) hue-rotate(312deg) brightness(102%) contrast(108%);
     transition: 0.5s;
     display: block;
   }

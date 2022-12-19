@@ -1,12 +1,6 @@
 import { SocialIcon } from "react-social-icons";
 import { motion } from "framer-motion";
-import {
-  PageInfo,
-  PageInfoFR,
-  PageInfoNL,
-  PageInfoPT,
-  Social,
-} from "../../typings";
+import { PageInfo, PageInfoFR, PageInfoNL, PageInfoPT, Social } from "../../typings";
 import { Dropdown } from "../dropdown";
 import Image from "next/image";
 import { Switcher } from "../switcher";
@@ -22,13 +16,7 @@ type Props = {
   pageInfoPT: PageInfoPT;
 };
 
-export const Header = ({
-  socials,
-  pageInfo,
-  pageInfoNL,
-  pageInfoFR,
-  pageInfoPT,
-}: Props) => {
+export const Header = ({ socials, pageInfo, pageInfoNL, pageInfoFR, pageInfoPT }: Props) => {
   const darkMode = useSelector(themeState);
 
   let router = useRouter();
@@ -45,7 +33,7 @@ export const Header = ({
       : "";
 
   return (
-    <header className="fixed top-0 w-screen py-5 pr-8 flex justify-between items-center xl:items-center">
+    <header className="fixed top-0 z-10 w-screen py-5 pr-8 flex justify-between items-center xl:items-center">
       <motion.div
         initial={{
           x: -500,
@@ -97,11 +85,7 @@ export const Header = ({
           className="w-[52px] h-[52px] rounded-full flex justify-center items-center hover:bg-black dark:hover:bg-honey transition-all duration-[0.5s]"
         >
           <Image
-            src={
-              darkMode
-                ? "/images/WHITE_CALENDAR.svg"
-                : "/images/CORN_CALENDER.svg"
-            }
+            src={darkMode ? "/images/WHITE_CALENDAR.svg" : "/images/CORN_CALENDER.svg"}
             alt={""}
             width={"28px"}
             height={"28px"}

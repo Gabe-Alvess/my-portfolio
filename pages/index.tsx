@@ -27,55 +27,21 @@ const Home = ({ pageInfo, pageInfoNL, pageInfoFR, pageInfoPT, skills, projects, 
         <Head>
           <title>{pageInfo?.name} - Portfolio</title>
         </Head>
-        <Header
-          socials={socials}
-          pageInfo={pageInfo}
-          pageInfoNL={pageInfoNL}
-          pageInfoFR={pageInfoFR}
-          pageInfoPT={pageInfoPT}
-        />
+        <Header socials={socials} pageInfo={pageInfo} pageInfoNL={pageInfoNL} pageInfoFR={pageInfoFR} pageInfoPT={pageInfoPT} />
         <section id="main" className="snap-start">
-          <Main
-            pageInfo={pageInfo}
-            pageInfoNL={pageInfoNL}
-            pageInfoFR={pageInfoFR}
-            pageInfoPT={pageInfoPT}
-            scrollRef={scrollRef}
-          />
+          <Main pageInfo={pageInfo} pageInfoNL={pageInfoNL} pageInfoFR={pageInfoFR} pageInfoPT={pageInfoPT} scrollRef={scrollRef} />
         </section>
         <section id="about" className="snap-center">
-          <About
-            pageInfo={pageInfo}
-            pageInfoNL={pageInfoNL}
-            pageInfoFR={pageInfoFR}
-            pageInfoPT={pageInfoPT}
-          />
+          <About pageInfo={pageInfo} pageInfoNL={pageInfoNL} pageInfoFR={pageInfoFR} pageInfoPT={pageInfoPT} />
         </section>
         <section id="skills" className="snap-start">
-          <Skills
-            skills={skills}
-            pageInfo={pageInfo}
-            pageInfoNL={pageInfoNL}
-            pageInfoFR={pageInfoFR}
-            pageInfoPT={pageInfoPT}
-          />
+          <Skills skills={skills} pageInfo={pageInfo} pageInfoNL={pageInfoNL} pageInfoFR={pageInfoFR} pageInfoPT={pageInfoPT} />
         </section>
         <section id="projects" className="snap-start">
-          <Projects
-            projects={projects}
-            pageInfo={pageInfo}
-            pageInfoNL={pageInfoNL}
-            pageInfoFR={pageInfoFR}
-            pageInfoPT={pageInfoPT}
-          />
+          <Projects projects={projects} pageInfo={pageInfo} pageInfoNL={pageInfoNL} pageInfoFR={pageInfoFR} pageInfoPT={pageInfoPT} />
         </section>
         <section id="contact" className="snap-start">
-          <Contact
-            pageInfo={pageInfo}
-            pageInfoNL={pageInfoNL}
-            pageInfoFR={pageInfoFR}
-            pageInfoPT={pageInfoPT}
-          />
+          <Contact pageInfo={pageInfo} pageInfoNL={pageInfoNL} pageInfoFR={pageInfoFR} pageInfoPT={pageInfoPT} />
         </section>
         <TopButton scrollRef={scrollRef} />
       </div>

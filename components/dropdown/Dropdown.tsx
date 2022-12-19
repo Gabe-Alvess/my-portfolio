@@ -83,12 +83,7 @@ export const Dropdown = ({}: Props) => {
   return (
     <div className="dropdown" ref={menuRef}>
       <div className="selected" onClick={() => setOpen(!open)}>
-        <Image
-          src={countryFlag}
-          alt={"English"}
-          width={"30px"}
-          height={"30px"}
-        />
+        <Image src={countryFlag} alt={"English"} width={"30px"} height={"30px"} />
         <p>{selectedLang}</p>
       </div>
       <div className={`dropdown-menu ${open ? "active" : "inactive"}`}>
@@ -102,12 +97,7 @@ export const Dropdown = ({}: Props) => {
               }}
               className="dropdown-item"
             >
-              <Image
-                src={language.imgUrl}
-                alt={language.alt}
-                width={"30px"}
-                height={"30px"}
-              />
+              <Image src={language.imgUrl} alt={language.alt} width={"30px"} height={"30px"} />
               <p>{language.name}</p>
             </div>
           </Link>

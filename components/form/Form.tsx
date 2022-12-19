@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useRef } from "react";
 import { PageInfo, PageInfoFR, PageInfoNL, PageInfoPT } from "../../typings";
 import emailjs from "@emailjs/browser";
@@ -26,12 +25,7 @@ type FormValues = {
   message: string;
 };
 
-export const Form = ({
-  pageInfo,
-  pageInfoNL,
-  pageInfoFR,
-  pageInfoPT,
-}: Props) => {
+export const Form = ({ pageInfo, pageInfoNL, pageInfoFR, pageInfoPT }: Props) => {
   const {
     register,
     handleSubmit,
@@ -41,34 +35,27 @@ export const Form = ({
   const formRef: any = useRef<HTMLFormElement>();
 
   const sendEmail = () => {
-    emailjs
-      .sendForm(
-        "service_qf0uwc9",
-        "template_vqleujr",
-        formRef.current,
-        "TR66B9-_SuDIa6Jhg"
-      )
-      .then(
-        (result) => {
-          console.log(result);
-          result.status === 200 ? formRef.current.reset() : null;
-          result.status === 200 ? formRef.current[0].focus() : null;
-        },
-        (error) => {
-          console.log(error.text);
-          toast.error("👎 Something went wrong!", {
-            position: "bottom-left",
-            transition: Slide,
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: false,
-            progress: undefined,
-            theme: "colored",
-          });
-        }
-      );
+    emailjs.sendForm("service_qf0uwc9", "template_vqleujr", formRef.current, "TR66B9-_SuDIa6Jhg").then(
+      (result) => {
+        console.log(result);
+        result.status === 200 ? formRef.current.reset() : null;
+        result.status === 200 ? formRef.current[0].focus() : null;
+      },
+      (error) => {
+        console.log(error.text);
+        toast.error("👎 Something went wrong!", {
+          position: "bottom-left",
+          transition: Slide,
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: false,
+          progress: undefined,
+          theme: "colored",
+        });
+      }
+    );
   };
 
   const toastMessage = async () => {
@@ -163,106 +150,50 @@ export const Form = ({
       : "";
 
   return (
-    <form
-      ref={formRef}
-      onSubmit={handleSubmit(sendEmail)}
-      className="flex flex-col items-center w-fit mx-auto max-h-[400px] "
-    >
+    <form ref={formRef} onSubmit={handleSubmit(sendEmail)} className="flex flex-col items-center w-fit mx-auto max-h-[400px] ">
       <div className="flex space-x-2">
         <div className="flex flex-col items-center justify-center">
-          <input
-            type="text"
-            {...register("firstName")}
-            placeholder={name}
-            className="contactInput h-[50px] w-[275px]"
-          />
+          <input type="text" {...register("firstName")} placeholder={name} className="contactInput h-[50px] w-[275px]" />
 
           <div className="flex">
-            <XCircleIcon
-              className={`errorIcon ${errors.firstName?.message ? "show" : ""}`}
-            />
-            <p
-              className={`errorMessage ${
-                errors.firstName?.message ? "show" : ""
-              }`}
-            >
-              {errors.firstName?.message}
-            </p>
+            <XCircleIcon className={`errorIcon ${errors.firstName?.message ? "show" : ""}`} />
+            <p className={`errorMessage ${errors.firstName?.message ? "show" : ""}`}>{errors.firstName?.message}</p>
           </div>
         </div>
         <div className="flex flex-col items-center">
-          <input
-            type="text"
-            {...register("lastName")}
-            placeholder={surname}
-            className="contactInput h-[50px] w-[275px]"
-          />
+          <input type="text" {...register("lastName")} placeholder={surname} className="contactInput h-[50px] w-[275px]" />
 
           <div className="flex">
-            <XCircleIcon
-              className={`errorIcon ${errors.lastName?.message ? "show" : ""}`}
-            />
-            <p
-              className={`errorMessage ${
-                errors.lastName?.message ? "show" : ""
-              }`}
-            >
-              {errors.lastName?.message}
-            </p>
+            <XCircleIcon className={`errorIcon ${errors.lastName?.message ? "show" : ""}`} />
+            <p className={`errorMessage ${errors.lastName?.message ? "show" : ""}`}>{errors.lastName?.message}</p>
           </div>
         </div>
       </div>
 
-      <input
-        type="email"
-        {...register("email")}
-        placeholder={pageInfo?.placeholderEmail}
-        className="contactInput h-[40px]"
-      />
+      <input type="email" {...register("email")} placeholder={pageInfo?.placeholderEmail} className="contactInput h-[40px]" />
 
       <div className="flex">
-        <XCircleIcon
-          className={`errorIcon ${errors.email?.message ? "show" : ""}`}
-        />
-        <p className={`errorMessage ${errors.email?.message ? "show" : ""}`}>
-          {errors.email?.message}
-        </p>
+        <XCircleIcon className={`errorIcon ${errors.email?.message ? "show" : ""}`} />
+        <p className={`errorMessage ${errors.email?.message ? "show" : ""}`}>{errors.email?.message}</p>
       </div>
 
-      <input
-        type="text"
-        {...register("subject")}
-        placeholder={subject}
-        className="contactInput h-[40px]"
-      />
+      <input type="text" {...register("subject")} placeholder={subject} className="contactInput h-[40px]" />
 
       <div className="flex">
-        <XCircleIcon
-          className={`errorIcon ${errors.subject?.message ? "show" : ""}`}
-        />
-        <p className={`errorMessage ${errors.subject?.message ? "show" : ""}`}>
-          {errors.subject?.message}
-        </p>
+        <XCircleIcon className={`errorIcon ${errors.subject?.message ? "show" : ""}`} />
+        <p className={`errorMessage ${errors.subject?.message ? "show" : ""}`}>{errors.subject?.message}</p>
       </div>
 
-      <textarea
-        {...register("message")}
-        placeholder={message}
-        className="contactInput h-[150px]"
-      />
+      <textarea {...register("message")} placeholder={message} className="contactInput h-[150px]" />
 
       <div className="flex">
-        <XCircleIcon
-          className={`errorIcon ${errors.message?.message ? "show" : ""}`}
-        />
-        <p className={`errorMessage ${errors.message?.message ? "show" : ""}`}>
-          {errors.message?.message}
-        </p>
+        <XCircleIcon className={`errorIcon ${errors.message?.message ? "show" : ""}`} />
+        <p className={`errorMessage ${errors.message?.message ? "show" : ""}`}>{errors.message?.message}</p>
       </div>
       <button
         onClick={toastMessage}
         type="submit"
-        className="w-[552px] uppercase bg-eerie dark:bg-honey py-5 px-10 rounded-md text-beige dark:text-eerie font-bold text-lg hover:bg-green-400 hover:text-black dark:hover:bg-green-700 dark:hover:text-honey hover:scale-[101%] transition-all duration-[0.5s]"
+        className="submitBtn"
       >
         {submit}
       </button>

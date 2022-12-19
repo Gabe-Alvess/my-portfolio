@@ -10,13 +10,7 @@ type Props = {
   scrollRef: any;
 };
 
-export const DownloadBtn = ({
-  pageInfo,
-  pageInfoNL,
-  pageInfoFR,
-  pageInfoPT,
-  scrollRef,
-}: Props) => {
+export const DownloadBtn = ({ pageInfo, pageInfoNL, pageInfoFR, pageInfoPT, scrollRef }: Props) => {
   let router = useRouter();
 
   const downloadButton =

@@ -1,4 +1,4 @@
-import { AboutBtn, SkillBtn, ProjectBtn, ContactBtn, DownloadBtn, Text } from "../../components";
+import { AboutBtn, SkillBtn, ProjectBtn, ContactBtn, DownloadBtn, Text } from "..";
 import { PageInfo, PageInfoFR, PageInfoNL, PageInfoPT } from "../../typings";
 import { BackgroundCircles } from "../circles";
 import { useRouter } from "next/router";
@@ -31,24 +31,11 @@ export const Main = ({ pageInfo, pageInfoNL, pageInfoFR, pageInfoPT, scrollRef }
     <div className="h-screen flex flex-col space-y-8 items-center justify-center text-center overflow-hidden">
       <BackgroundCircles />
       <div className="relative h-32 w-32 mx-auto">
-        <Image
-          className="rounded-full"
-          layout="fill"
-          src={urlFor(pageInfo?.introImage).url()}
-          alt=""
-          priority
-        />
+        <Image className="rounded-full" layout="fill" src={urlFor(pageInfo?.introImage).url()} alt="" priority />
       </div>
       <div className="z-20">
-        <h1 className="text-beige dark:text-beige text-base uppercase pb-2 tracking-[15px] animate-pulse font-bold">
-          {role}
-        </h1>
-        <Text
-          pageInfo={pageInfo}
-          pageInfoNL={pageInfoNL}
-          pageInfoFR={pageInfoFR}
-          pageInfoPT={pageInfoPT}
-        />
+        <h1 className="text-beige dark:text-beige text-base uppercase pb-2 tracking-[15px] animate-pulse font-bold">{role}</h1>
+        <Text pageInfo={pageInfo} pageInfoNL={pageInfoNL} pageInfoFR={pageInfoFR} pageInfoPT={pageInfoPT} />
         <div className="pt-5">
           <AboutBtn
             pageInfo={pageInfo}

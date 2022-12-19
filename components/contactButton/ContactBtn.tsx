@@ -10,13 +10,7 @@ type Props = {
   scrollRef: any;
 };
 
-export const ContactBtn = ({
-  pageInfo,
-  pageInfoNL,
-  pageInfoFR,
-  pageInfoPT,
-  scrollRef,
-}: Props) => {
+export const ContactBtn = ({ pageInfo, pageInfoNL, pageInfoFR, pageInfoPT, scrollRef }: Props) => {
   let router = useRouter();
 
   const contactButton =

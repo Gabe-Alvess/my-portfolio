@@ -1,4 +1,4 @@
-import { ArrowSmallUpIcon } from "@heroicons/react/24/outline";
+import { ChevronDoubleUpIcon } from "@heroicons/react/24/outline";
 import React, { useEffect, useState } from "react";
 
 type Props = {
@@ -10,7 +10,7 @@ export const TopButton = ({ scrollRef }: Props) => {
 
   useEffect(() => {
     const toggleVisibility = () => {
-      if (scrollRef.current.scrollTop > 900) {
+      if (scrollRef.current.scrollTop > 400) {
         setIsVisible(true);
       } else {
         setIsVisible(false);
@@ -29,12 +29,8 @@ export const TopButton = ({ scrollRef }: Props) => {
 
   return (
     <footer className="fixed bottom-2 w-full flex justify-center">
-      <button
-        className={`${isVisible ? "opacity-100" : "opacity-0"} topBtn`}
-        onClick={scrollToTop}
-        type="button"
-      >
-        <ArrowSmallUpIcon className="w-6 h-6" aria-hidden="true" />
+      <button className={`${isVisible ? "opacity-100" : "opacity-0"} topBtn`} onClick={scrollToTop} type="button">
+        <ChevronDoubleUpIcon className="w-6 h-6" aria-hidden="true" />
       </button>
     </footer>
   );
