@@ -22,6 +22,6 @@
     "components/notifications/NotificationProvider.tsx",
     "i18next.js",
     "next-i18next.config.js"
-  ],
+, "components/scrollX/ProjectScrollX.tsx"  ],
   "exclude": ["node_modules"]
 }
