@@ -24,9 +24,20 @@ export const DownloadBtn = ({ pageInfo, pageInfoNL, pageInfoFR, pageInfoPT, scro
       ? pageInfoPT?.downloadButton
       : "";
 
+  const cvUrl =
+    router.locale === "en"
+      ? pageInfo?.myCurriculumURL
+      : router.locale === "nl"
+      ? pageInfoNL?.myCurriculumURL
+      : router.locale === "fr"
+      ? pageInfoFR?.myCurriculumURL
+      : router.locale === "pt"
+      ? pageInfoPT?.myCurriculumURL
+      : "";
+
   return (
     <>
-      <a href={`${pageInfo?.myCurriculumURL}?dl=`}>
+      <a href={`${cvUrl}?dl=`}>
         <button className="Buttons">{downloadButton}</button>
       </a>
     </>

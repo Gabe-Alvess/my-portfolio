@@ -5,7 +5,7 @@
 
 @layer components {
   .wrapper {
-    @apply h-screen snap-y snap-mandatory scrollbar font-Signika bg-red-800 text-beige dark:bg-eerie scrollbar-thumb-gold/80 dark:scrollbar-thumb-tomato/80 hover:scrollbar-thumb-gold  hover:dark:scrollbar-thumb-tomato;
+    @apply h-screen snap-y snap-mandatory scrollbar sm:overflow-x-hidden portrait:overflow-x-hidden font-Signika bg-red-800 text-beige dark:bg-eerie scrollbar-thumb-gold/80 dark:scrollbar-thumb-tomato/80 hover:scrollbar-thumb-gold  hover:dark:scrollbar-thumb-tomato;
   }
 
   .Buttons {
@@ -53,18 +53,31 @@
   }
 
   .topBtn {
-    @apply transition-all duration-500 cursor-pointer rounded-full shadow-sm p-3 text-gold hover:text-green-400 dark:text-honey dark:hover:text-green-400 ring-green-400 hover:ring-2;
+    @apply transition-all duration-500 rounded-full p-3 bg-black/50 hover:bg-black/80 text-gold hover:text-beige dark:text-honey dark:hover:text-beige ring-beige hover:ring-2 cursor-pointer;
   }
 
   .submitBtn {
     @apply w-[552px] uppercase bg-eerie dark:bg-honey py-5 px-10 rounded-md text-beige dark:text-eerie font-bold text-lg hover:bg-green-400 hover:text-black dark:hover:bg-green-700 dark:hover:text-honey hover:scale-[101%] transition-all duration-500;
   }
 
-  ::-webkit-scrollbar-track {
+  .chevronLeft,
+  .chevronRight {
+    @apply absolute h-14 top-[50%] -translate-x-0 translate-y-[-50%] text-2xl rounded-full p-2 transition-all duration-500 bg-black/50 hover:bg-black/80 text-gold hover:text-beige dark:text-honey dark:hover:text-beige ring-beige hover:ring-2  cursor-pointer z-10;
+  }
+
+  .modal-container {
+    @apply fixed top-0 left-0 w-full h-full bg-[rgba(0,0,0,0.7)] z-10 flex items-center justify-center;
+  }
+
+  .modal {
+    @apply h-[65vh] lg:w-[50vw]  md:w-[70vw] sm:w-[90vw] portrait:w-[90vw] rounded;
+  }
+
+  .wrapper::-webkit-scrollbar-track {
     margin-block: 15px;
   }
 
-  ::-webkit-scrollbar-thumb {
+  .wrapper::-webkit-scrollbar-thumb {
     border-radius: 100vw;
     border: 4px solid rgba(31, 41, 55, 0.2);
   }
