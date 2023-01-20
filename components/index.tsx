@@ -16,3 +16,4 @@ export * from "./projectButton";
 export * from "./contactButton";
 export * from "./downloadButton";
 export * from "./typewriter";
+export * from "./chevrons";

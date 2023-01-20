@@ -118,6 +118,11 @@ export default {
       type: "string",
     },
     {
+      name: "address",
+      title: "Address",
+      type: "string",
+    },
+    {
       name: "placeholderName",
       title: "Placeholder Name",
       type: "string",

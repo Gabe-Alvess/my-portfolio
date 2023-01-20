@@ -1,7 +1,9 @@
 import { PageInfo, PageInfoFR, PageInfoNL, PageInfoPT, Project } from "../../typings";
+import React, { useRef } from "react";
 import { useRouter } from "next/router";
 import { urlFor } from "../../sanity";
 import Image from "next/image";
+import { ChevronBtns } from "../../components";
 
 type Props = {
   projects: Project[];
@@ -12,6 +14,7 @@ type Props = {
 };
 
 export const Projects = ({ projects, pageInfo, pageInfoNL, pageInfoFR, pageInfoPT }: Props) => {
+  const scrollXRef: any = useRef();
   let router = useRouter();
 
   const title =
@@ -59,15 +62,15 @@ export const Projects = ({ projects, pageInfo, pageInfoNL, pageInfoFR, pageInfoP
       : "";
 
   return (
-    <div className="flex flex-col relative h-screen text-left md:flex-row max-w-full justify-evenly mx-auto items-center z-0">
+    <div className="flex flex-col relative h-screen text-left md:flex-row max-w-full justify-evenly mx-auto items-center select-none z-0 ">
       <h2 className="absolute top-24 uppercase tracking-[20px] text-gold dark:text-tomato text-2xl font-bold">{title}</h2>
       <h3 className="absolute top-36 uppercase tracking-[3px] dark:text-honey text-base">{subtitle}</h3>
 
-      <div className="relative w-full flex scroll-smooth snap-x snap-mandatory z-20 scrollbar scrollbar-thumb-gold/80 dark:scrollbar-thumb-tomato/70">
+      <div ref={scrollXRef} className="relative w-full flex scrollbar scrollbar-thumb-transparent z-10">
         {projects?.map((project, i) => (
           <div
             key={project._id}
-            className="w-screen h-screen flex-shrink-0 snap-center flex flex-col items-center justify-center space-y-5 p-20 md:pd-44"
+            className="w-screen h-screen flex-shrink-0 flex flex-col items-center justify-center space-y-5 p-20 md:p-44"
           >
             <div>
               <div className="transition-all hover:scale-110 duration-[0.5s] mt-[155px]">
@@ -78,6 +81,7 @@ export const Projects = ({ projects, pageInfo, pageInfoNL, pageInfoFR, pageInfoP
                     alt=""
                     width={400}
                     height={400}
+                    priority
                   />
                 </a>
               </div>
@@ -122,7 +126,7 @@ export const Projects = ({ projects, pageInfo, pageInfoNL, pageInfoFR, pageInfoP
           </div>
         ))}
       </div>
-
+      <ChevronBtns scrollXRef={scrollXRef} />
       <div className="w-full absolute top-[30%] bg-eerie dark:bg-tomato/50 left-0 h-[400px] -skew-y-12" />
     </div>
   );

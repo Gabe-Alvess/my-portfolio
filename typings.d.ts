@@ -78,6 +78,7 @@ export interface PageInfoNL extends SanityBody {
   projectLinkTitel: string;
   contactTitle: string;
   contactSubtitle: string;
+  address: string;
   placeholderName: string;
   placeholderSurname: string;
   placeholderSubject: string;
@@ -111,6 +112,7 @@ export interface PageInfoFR extends SanityBody {
   projectLinkTitel: string;
   contactTitle: string;
   contactSubtitle: string;
+  address: string;
   placeholderName: string;
   placeholderSurname: string;
   placeholderSubject: string;
@@ -144,6 +146,7 @@ export interface PageInfoPT extends SanityBody {
   projectLinkTitel: string;
   contactTitle: string;
   contactSubtitle: string;
+  address: string;
   placeholderName: string;
   placeholderSurname: string;
   placeholderSubject: string;
