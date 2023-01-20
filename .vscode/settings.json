@@ -3,6 +3,5 @@
   "css.lint.unknownAtRules": "ignore",
   "cSpell.customDictionaries": {},
   "cSpell.dictionaryDefinitions": [],
-  "cSpell.languageSettings": [],
-  "prettier.printWidth": 134
+  "cSpell.languageSettings": []
 }
